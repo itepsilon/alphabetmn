@@ -7,9 +7,8 @@ const UserComponent = () => {
 
     useEffect(async() => {
         const result = await axios('http://localhost:8080/api/users',)
-        console.log(result);
         setUsers(result.data)
-    })
+    },[])
 
     return (
         <div>
