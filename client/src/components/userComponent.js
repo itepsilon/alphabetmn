@@ -12,6 +12,9 @@ const UserComponent = () => {
 
     return (
         <div>
+            <p>Hello2</p>
+            <p>Hello</p>
+            <p>Hellobs</p>
             {users.map(user => 
                 <div key = {user.id}>
                     <li>{user.id}</li>
