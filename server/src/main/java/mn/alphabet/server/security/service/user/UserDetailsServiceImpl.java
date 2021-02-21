@@ -1,4 +1,4 @@
-package mn.alphabet.server.security.service;
+package mn.alphabet.server.security.service.user;
 
 import javax.transaction.Transactional;
 

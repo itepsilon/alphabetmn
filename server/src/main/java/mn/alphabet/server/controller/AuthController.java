@@ -27,7 +27,7 @@ import mn.alphabet.server.payload.response.JwtResponse;
 import mn.alphabet.server.payload.response.MessageResponse;
 import mn.alphabet.server.repository.*;
 import mn.alphabet.server.security.jwt.*;
-import mn.alphabet.server.security.service.UserDetailsImpl;
+import mn.alphabet.server.security.service.user.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

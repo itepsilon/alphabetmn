@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import mn.alphabet.server.security.jwt.AuthEntryPointJwt;
 import mn.alphabet.server.security.jwt.AuthTokenFilter;
-import mn.alphabet.server.security.service.UserDetailsServiceImpl;
+import mn.alphabet.server.security.service.user.UserDetailsServiceImpl;
 
 
 @Configuration
@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
 			.antMatchers("/api/test/**").permitAll()
+			.antMatchers("/api/user/**").permitAll()
 			.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
