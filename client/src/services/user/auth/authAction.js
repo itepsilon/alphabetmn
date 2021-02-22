@@ -1,20 +1,25 @@
 import {LOGIN_REQUEST,SUCCESS,FAILURE} from './authTypes'
-
-export const authenticateUser= (email, password) => {
+import axios from 'axios'
+export const authenticateUser= (username, password) => {
+    const cred = {
+        username: username,
+        password: password
+    }
+    console.log(cred)
     return dispatch => {
-        dispatch(loginReqiest());
-        if(email === "test" && password === "test"){
+        dispatch({
+            type: LOGIN_REQUEST
+        });
+        axios.post("http://localhost:8080/api/auth/signin", cred).then(response => {
+            let token = response.data.accessToken
+            localStorage.setItem('jwtToken', token)
             dispatch(success(true));
-        } else {
+        }).catch(error => {
             dispatch(failure());
-        }
+        })
     }
 }
-const loginReqiest = () => {
-    return {
-        type: LOGIN_REQUEST
-    }
-}
+
 
 const success = isLoggedIn => {
     return {

@@ -9,7 +9,7 @@ class Login extends Component {
     }
 
     initialState = {
-        email: '',
+        username: '',
         password: '',
         error:''
     }
@@ -19,26 +19,26 @@ class Login extends Component {
         })
     }
     handleSend = () => {
-        alert(this.state.email + " "+ this.state.password)
+        alert(this.state.username + " "+ this.state.password)
     }
 
     validateUser = () => {
-        this.props.authenticateUser(this.state.email,this.state.password)
+        this.props.authenticateUser(this.state.username,this.state.password)
         setTimeout(() => {
             console.log(this.props.auth.isLoggedIn);
             if(this.props.auth.isLoggedIn){
                 return this.props.history.push("/");
             } else {
-                this.setState({"error": "Invalid email and pass"})
+                this.setState({"error": "Invalid username and pass"})
             }
-        })
+        },500)
     }
     render() {
-        const {email, password, error} = this.state;
+        const {username, password, error} = this.state;
         return (
             <div>
-                Email
-                <input value={email} name="email" onChange={this.handleCredChange}></input>
+                username
+                <input value={username} name="username" onChange={this.handleCredChange}></input>
                 Password
                 <input value={password} name="password" onChange={this.handleCredChange}></input>
                 <button onClick={this.validateUser}>send</button>
@@ -55,7 +55,7 @@ const mapStateToProps = state => {
 
 const mapDispatchProps = dispatch =>{
     return {
-        authenticateUser: (email, password) => dispatch(authenticateUser(email, password))
+        authenticateUser: (username, password) => dispatch(authenticateUser(username, password))
     }
 }
 
