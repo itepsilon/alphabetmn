@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {authenticateUser} from '../services/index'
 
-class Login extends Component {
+class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = this.initialState;
@@ -25,7 +25,6 @@ class Login extends Component {
     validateUser = () => {
         this.props.authenticateUser(this.state.username,this.state.password)
         setTimeout(() => {
-            console.log(this.props.auth.isLoggedIn);
             if(this.props.auth.isLoggedIn){
                 return this.props.history.push("/");
             } else {

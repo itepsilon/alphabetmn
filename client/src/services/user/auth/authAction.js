@@ -1,4 +1,4 @@
-import {LOGIN_REQUEST,SUCCESS,FAILURE} from './authTypes'
+import {LOGIN_REQUEST,SUCCESS,FAILURE, LOGOUT_REQUEST} from './authTypes'
 import axios from 'axios'
 export const authenticateUser= (username, password) => {
     const cred = {
@@ -20,6 +20,15 @@ export const authenticateUser= (username, password) => {
     }
 }
 
+export const logoutUser = () => {
+    return dispatch => {
+        dispatch({
+            type: LOGOUT_REQUEST
+        })
+        localStorage.removeItem('jwtToken');
+        dispatch(success(false))
+    }
+}
 
 const success = isLoggedIn => {
     return {
