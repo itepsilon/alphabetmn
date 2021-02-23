@@ -16,16 +16,15 @@ class Header extends React.Component {
             <>
                 <Link className="auth" to="/login">Login</Link>
                 <Link className="auth" to="/signup">Sign Up</Link>
-                
             </>
         )
         const userLinks = (
             <>
                 <Link className="auth" to="/hello" onClick={this.logout}>Log out</Link>
-                <Link className="auth" to="/mommy">Somewhere</Link>
+                <Link className="auth" to="/somewhere">Somewhere</Link>
+                <Link className="auth" to="/mommywhere3">Somewhere3</Link>
             </>
         )
-        console.log(this.props.auth.isLoggedIn)
         return (
             <div className={this.props.className}>
                 <div className="nav">

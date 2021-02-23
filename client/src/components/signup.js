@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-
+import {registerUser} from '../services/index'
 class Signup extends React.Component {
     constructor(props){
         super(props)
@@ -19,7 +19,12 @@ class Signup extends React.Component {
             [event.target.name] : event.target.value
         })
     }
-  
+    registerUser = () => {
+        this.props.registerUser(this.state.username, this.state.email, this.state.password)
+        setTimeout(() => {
+            // return this.props.history.push("/");
+        }, 1000)
+    }
     render() {
         const {username, password, email, error} = this.state;
         return (
@@ -30,23 +35,23 @@ class Signup extends React.Component {
                 <input value={email} name="email" onChange={this.handleCredChange}></input>
                 Password
                 <input value={password} name="password" onChange={this.handleCredChange}></input>
-                <button>send</button>
-                <p>{this.state.error}</p>
+                <button onClick={this.registerUser}>send</button>
+                
+                <p>{this.props.register.message}</p>
             </div>
         )
     }
 }
 const mapStateToProps = state => {
     return {
-        auth:state.auth
+        register:state.register
     }
 }
 
-// const mapDispatchProps = dispatch =>{
-//     return {
-//         authenticateUser: (username, password) => dispatch(authenticateUser(username, password))
-//     }
-// }
+const mapDispatchProps = dispatch =>{
+    return {
+        registerUser: (username, email, password) => dispatch(registerUser(username, email, password))
+    }
+}
 
-// export default connect(mapStateToProps, mapDispatchProps)(Signup)
-export default Signup
+export default connect(mapStateToProps, mapDispatchProps)(Signup)
