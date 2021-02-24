@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user",
     uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
     }
 )
@@ -16,7 +15,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private String firstName;
+    private String lastName;
 
     private String email;
 
@@ -34,8 +34,9 @@ public class User {
         //
     }
 
-    public User(String username, String email, String password){
-        this.username = username;
+    public User(String email, String password, String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
@@ -46,14 +47,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -80,6 +73,22 @@ public class User {
         this.roles = roles;
     }
     
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
 
 }

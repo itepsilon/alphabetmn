@@ -6,23 +6,32 @@ import java.util.Set;
 
 public class SignupRequest {
 
-    private String username;
- 
-
     private String email;
     
+    private String firstName;
+
+    private String lastName; 
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     private Set<String> role;
     
 
     private String password;
-  
-    public String getUsername() {
-        return username;
-    }
- 
-    public void setUsername(String username) {
-        this.username = username;
-    }
  
     public String getEmail() {
         return email;

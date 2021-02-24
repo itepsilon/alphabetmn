@@ -1,8 +1,8 @@
 import {LOGIN_REQUEST,SUCCESS,FAILURE, LOGOUT_REQUEST} from './authTypes'
 import axios from 'axios'
-export const authenticateUser = (username, password) => {
+export const authenticateUser = (email, password) => {
     const cred = {
-        username: username,
+        email: email,
         password: password
     }
     return dispatch => {

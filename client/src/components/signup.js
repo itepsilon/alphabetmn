@@ -9,7 +9,8 @@ class Signup extends React.Component {
 
     initialState = {
         email:'',
-        username: '',
+        firstName: '',
+        lastName: '',
         password: '',
         error:''
     }
@@ -20,23 +21,24 @@ class Signup extends React.Component {
         })
     }
     registerUser = () => {
-        this.props.registerUser(this.state.username, this.state.email, this.state.password)
+        this.props.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password)
         setTimeout(() => {
             // return this.props.history.push("/");
         }, 1000)
     }
     render() {
-        const {username, password, email, error} = this.state;
+        const {firstName, lastName, password, email, error} = this.state;
         return (
             <div>
-                username
-                <input value={username} name="username" onChange={this.handleCredChange}></input>
+                firstName
+                <input value={firstName} name="firstName" onChange={this.handleCredChange}></input>
+                lastName
+                <input value={lastName} name="lastName" onChange={this.handleCredChange}></input>
                 email
                 <input value={email} name="email" onChange={this.handleCredChange}></input>
                 Password
                 <input value={password} name="password" onChange={this.handleCredChange}></input>
                 <button onClick={this.registerUser}>send</button>
-                
                 <p>{this.props.register.message}</p>
             </div>
         )
@@ -50,7 +52,7 @@ const mapStateToProps = state => {
 
 const mapDispatchProps = dispatch =>{
     return {
-        registerUser: (username, email, password) => dispatch(registerUser(username, email, password))
+        registerUser: (firstName, lastName, email, password) => dispatch(registerUser(firstName, lastName, email, password))
     }
 }
 

@@ -1,9 +1,10 @@
 import {REGISTER_SUCCESS,REGISTER_FAILURE,REGISTER_REQUEST} from './registerTypes'
 import axios from 'axios'
 
-export const registerUser = (username, email, password) => {
+export const registerUser = (firstName, lastName, email, password) => {
     const cred = {
-        username: username,
+        firstName: firstName,
+        lastName: lastName,
         email:email,
         password: password,
         role: ["user"]

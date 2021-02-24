@@ -9,7 +9,7 @@ class Login extends React.Component {
     }
 
     initialState = {
-        username: '',
+        email: '',
         password: '',
         error:''
     }
@@ -19,25 +19,25 @@ class Login extends React.Component {
         })
     }
     handleSend = () => {
-        alert(this.state.username + " "+ this.state.password)
+        alert(this.state.email + " "+ this.state.password)
     }
 
     validateUser = () => {
-        this.props.authenticateUser(this.state.username,this.state.password)
+        this.props.authenticateUser(this.state.email,this.state.password)
         setTimeout(() => {
             if(this.props.auth.isLoggedIn){
                 return this.props.history.push("/");
             } else {
-                this.setState({"error": "Invalid username and pass"})
+                this.setState({"error": "Invalid email and pass"})
             }
         },500)
     }
     render() {
-        const {username, password, error} = this.state;
+        const {email, password, error} = this.state;
         return (
             <div>
-                username
-                <input value={username} name="username" onChange={this.handleCredChange}></input>
+                email
+                <input value={email} name="email" onChange={this.handleCredChange}></input>
                 Password
                 <input value={password} name="password" onChange={this.handleCredChange}></input>
                 <button onClick={this.validateUser}>send</button>
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchProps = dispatch =>{
     return {
-        authenticateUser: (username, password) => dispatch(authenticateUser(username, password))
+        authenticateUser: (email, password) => dispatch(authenticateUser(email, password))
     }
 }
 

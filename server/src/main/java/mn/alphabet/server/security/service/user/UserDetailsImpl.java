@@ -18,7 +18,9 @@ public class UserDetailsImpl implements UserDetails{
 
 	private Long id;
 
-	private String username;
+	private String firstName;
+
+	private String lastName;
 
 	private String email;
 
@@ -27,10 +29,11 @@ public class UserDetailsImpl implements UserDetails{
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String username, String email, String password,
+	public UserDetailsImpl(Long id, String firstName, String lastName, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
-		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
@@ -43,7 +46,8 @@ public class UserDetailsImpl implements UserDetails{
 
 		return new UserDetailsImpl(
 				user.getId(), 
-				user.getUsername(), 
+				user.getFirstName(), 
+				user.getLastName(), 
 				user.getEmail(),
 				user.getPassword(), 
 				authorities);
@@ -67,11 +71,14 @@ public class UserDetailsImpl implements UserDetails{
 		return password;
 	}
 
-	@Override
-	public String getUsername() {
-		return username;
+
+	public String getFirstName(){
+		return firstName;
 	}
 
+	public String getLastName(){
+		return lastName;
+	}
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -100,6 +107,11 @@ public class UserDetailsImpl implements UserDetails{
 			return false;
 		UserDetailsImpl user = (UserDetailsImpl) o;
 		return Objects.equals(id, user.id);
+	}
+
+	@Override
+	public String getUsername() {
+		return null;
 	}
     
 }
