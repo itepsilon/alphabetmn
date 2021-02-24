@@ -23,7 +23,7 @@ class Signup extends React.Component {
     registerUser = () => {
         this.props.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password)
         setTimeout(() => {
-            // return this.props.history.push("/");
+            return this.props.history.push("/login");
         }, 1000)
     }
     render() {
