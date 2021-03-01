@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {authenticateUser} from '../services/index'
-
+import styled from 'styled-components'
 class Login extends React.Component {
     constructor(props){
         super(props)
@@ -35,12 +35,13 @@ class Login extends React.Component {
     render() {
         const {email, password, error} = this.state;
         return (
-            <div>
-                email
+            <div className={this.props.className}>
+                <p className="email-class">Email</p>
                 <input value={email} name="email" onChange={this.handleCredChange}></input>
-                Password
+                <p>Password</p>
                 <input value={password} name="password" onChange={this.handleCredChange}></input>
                 <button onClick={this.validateUser}>send</button>
+                <p>Hello</p>
                 <p>{this.state.error}</p>
             </div>
         )
@@ -58,4 +59,9 @@ const mapDispatchProps = dispatch =>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(Login)
+const styledLogin = styled(Login)`
+    .email-class{
+        color: red;
+    }
+`
+export default connect(mapStateToProps, mapDispatchProps)(styledLogin)

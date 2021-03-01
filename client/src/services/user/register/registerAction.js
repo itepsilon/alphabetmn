@@ -21,6 +21,7 @@ export const registerUser = (firstName, lastName, email, password) => {
     }
 }
 
+
 const successMessage = message => {
     return {
         type: REGISTER_SUCCESS,

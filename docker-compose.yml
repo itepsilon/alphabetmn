@@ -23,45 +23,8 @@ services:
   #     - backend
   #     - frontend
 
-  # BackEnd Service
-  server:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./server
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/alphabet?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      CHOKIDAR_USEPOLLING: "true"
-    depends_on:
-      - db
-    restart: always
-    networks: 
-      - backend
-      - frontend
-  # Frontend Service 
-  client:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-      NODE_ENV: "development"
-    stdin_open: true
-    ports:
-       - "3000:3000"
-    volumes:
-      - /app/node_modules
-      - ./client:/app
-    restart: always
-    depends_on:
-      - server
-    networks:
-      - frontend  
 
-  # Database Service (Mysql)
+
   db:
     image: mysql:5.7
     ports:
@@ -74,14 +37,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db-data:/var/lib/mysql
-    networks:
-      - backend  
   
 # Volumes
 volumes:
   db-data:
-
-# Networks to be created to facilitate communication between containers
-networks:
-  backend:
-  frontend:    
