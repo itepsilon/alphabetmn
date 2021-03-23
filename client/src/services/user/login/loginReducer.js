@@ -1,19 +1,20 @@
-import * as registerTypes from './registerTypes'
+import * as loginTypes from './loginTypes'
 
 const initialState = {
-    message: ''
+    isLoggedIn: ''
 }
 
 const registerReducer = (state = initialState, action) => {
     switch(action.type){
-        case registerTypes.REGISTER_REQUEST:
+        case loginTypes.LOGIN_REQUEST:
+        case loginTypes.LOGOUT_REQUEST:
             return {
                 ...state
             }
-        case registerTypes.REGISTER_SUCCESS:
-        case registerTypes.REGISTER_FAILURE:
+        case loginTypes.LOGIN_SUCCESS:
+        case loginTypes.LOGIN_FAILURE:
             return {
-                message: action.payload
+                isLoggedIn: action.payload
             }
         default:
             return state;
