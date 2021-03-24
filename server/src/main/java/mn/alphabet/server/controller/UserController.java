@@ -22,7 +22,7 @@ public class UserController {
     public UserService service;
 
 	@GetMapping("/all")
-    // @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
 	public List<User> getAllUser(){
         return service.getUsers();
     }
