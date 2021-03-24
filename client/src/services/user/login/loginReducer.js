@@ -4,7 +4,11 @@ const initialState = {
     isLoggedIn: ''
 }
 
-const registerReducer = (state = initialState, action) => {
+if(localStorage.getItem('jwtToken')){
+    initialState.isLoggedIn = true;
+    // check if token is expired?
+}
+const loginReducer = (state = initialState, action) => {
     switch(action.type){
         case loginTypes.LOGIN_REQUEST:
         case loginTypes.LOGOUT_REQUEST:
@@ -21,4 +25,4 @@ const registerReducer = (state = initialState, action) => {
     }
 }
 
-export default registerReducer
+export default loginReducer
