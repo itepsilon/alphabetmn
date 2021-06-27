@@ -1,11 +1,11 @@
-package mn.alphabet.server.entity;
+package mn.alphabet.server.entities;
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user",
+@Table(name = "users",
     uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
     }
@@ -17,9 +17,7 @@ public class User {
 
     private String firstName;
     private String lastName;
-
     private String email;
-
     private String password;
     
     @ManyToMany(fetch = FetchType.LAZY)
@@ -29,10 +27,9 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    
-    public User() {
-        
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Profile profile;
 
     public User(String email, String password, String firstName, String lastName){
         this.firstName = firstName;
@@ -89,6 +86,4 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
-
 }

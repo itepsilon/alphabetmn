@@ -1,10 +1,10 @@
-package mn.alphabet.server.repository;
+package mn.alphabet.server.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import mn.alphabet.server.entity.User;
+import mn.alphabet.server.entities.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByEmail(String email);

@@ -1,4 +1,4 @@
-package mn.alphabet.server.controller;
+package mn.alphabet.server.controllers;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mn.alphabet.server.entity.ERole;
-import mn.alphabet.server.entity.Role;
-import mn.alphabet.server.entity.User;
+import mn.alphabet.server.entities.ERole;
+import mn.alphabet.server.entities.Role;
+import mn.alphabet.server.entities.User;
 import mn.alphabet.server.payload.request.LoginRequest;
 import mn.alphabet.server.payload.request.SignupRequest;
 import mn.alphabet.server.payload.response.JwtResponse;
 import mn.alphabet.server.payload.response.MessageResponse;
-import mn.alphabet.server.repository.*;
+import mn.alphabet.server.repositories.*;
 import mn.alphabet.server.security.jwt.*;
 import mn.alphabet.server.security.service.user.UserDetailsImpl;
 

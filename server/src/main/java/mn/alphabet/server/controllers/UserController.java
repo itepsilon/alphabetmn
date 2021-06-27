@@ -1,4 +1,4 @@
-package mn.alphabet.server.controller;
+package mn.alphabet.server.controllers;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mn.alphabet.server.entity.User;
+import mn.alphabet.server.entities.User;
 import mn.alphabet.server.security.service.user.UserService;
 
 

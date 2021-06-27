@@ -1,4 +1,4 @@
-package mn.alphabet.server.entity;
+package mn.alphabet.server.entities;
 
 public enum ERole {
     ROLE_USER,
