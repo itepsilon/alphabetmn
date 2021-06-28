@@ -14,11 +14,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>server</name>
 	<description>Alphabet MN Server</description>
-	<properties>
-		<java.version>8</java.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -41,7 +36,8 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.20</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,14 +63,14 @@
 			<id>cloud-gcp</id>
 			<dependencies>
 				<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-gcp-starter</artifactId>
-				<version>1.2.8.RELEASE</version>
+					<groupId>com.google.cloud</groupId>
+					<artifactId>spring-cloud-gcp-starter</artifactId>
+					<version>2.0.3</version>
 				</dependency>
 				<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-				<version>1.2.8.RELEASE</version>
+					<groupId>com.google.cloud</groupId>
+					<artifactId>spring-cloud-gcp-starter-sql-postgresql</artifactId>
+					<version>2.0.3</version>
 				</dependency>
 			</dependencies>
 			<build>
@@ -82,10 +78,10 @@
 					<plugin>
 						<groupId>com.google.cloud.tools</groupId>
 						<artifactId>appengine-maven-plugin</artifactId>
-						<version>2.2.0</version>
+						<version>2.4.0</version>
 						<configuration>
 							<deploy.projectId>alphabetmn</deploy.projectId>
-							<deploy.version>launch-1</deploy.version>
+							<deploy.version>launch-3</deploy.version>
 						</configuration>
 					</plugin>
 				</plugins>
